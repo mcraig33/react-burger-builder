@@ -1,25 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
-function App() {
-  state = {
-    show: true
-  };
+class App extends Component {
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({show: false})
-    }, 5000);
+  render(){
+    return (
+      <div>
+        <Layout>
+          <BurgerBuilder />
+        </Layout>
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <Layout>
-        {this.state.show ? <BurgerBuilder /> : null}
-      </Layout>
-    </div>
-  );
 }
 
 export default App;
