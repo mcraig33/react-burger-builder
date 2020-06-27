@@ -7,8 +7,6 @@ import * as actions from '../../store/actions'
 
 class Checkout extends Component {
 
-
-
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
     }
