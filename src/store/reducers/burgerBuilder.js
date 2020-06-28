@@ -5,7 +5,8 @@ import { fetchIngredientsFailed } from '../actions/burgerBuilder';
 const initialState = {
     ingredients: null,
     totalPrice: 0,
-    error: false
+    error: false,
+    building: false
 }
 
 const INGREDIENT_PRICES = {
@@ -20,7 +21,8 @@ const addIngredient = (state, action) => {
     const updatedIngredients = updateObject(state.ingredients, updatedIngredient);
     const updatedState = {
         ingredients: updatedIngredients,
-        totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+        totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+        building: true
     }
     return updateObject(state, updatedState);
 }
@@ -30,7 +32,8 @@ const removeIngredient = (state, action) =>{
     const updatedIngs = updateObject(state.ingredients, updatedIng);
     const updatedSt = {
         ingredients: updatedIngs,
-        totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
+        totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName],
+        building: true
     }
     return updateObject(state, updatedSt);
 }
@@ -41,7 +44,8 @@ const setIngredient = (state, action) => {
             salad: action.ingredients.salad,
             bacon: action.ingredients.bacon,
             cheese: action.ingredients.cheese,
-            meat: action.ingredients.meat
+            meat: action.ingredients.meat,
+            building: false
         },
         totalPrice: 4,
         error: false
