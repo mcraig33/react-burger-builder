@@ -5,7 +5,7 @@ import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component{
     componentWillUpdate(){
-        console.log('[OrderSummar] Will Update')
+        console.log('[OrderSummary] Will Update');
     }
 
     render() {
@@ -16,8 +16,8 @@ class OrderSummary extends Component{
                                             <li key={ingKey}>
                                                 <span style={{textTransform: 'capitalize'}}>{ingKey}</span>: {this.props.ingredients[ingKey]}
                                             </li>
-                                        )
-                                    })
+                                        );
+                                    });
 
         return (    
             <Aux>
