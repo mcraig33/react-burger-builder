@@ -8,7 +8,7 @@ import MenuToggle from '../../Navigation/MenuToggle/MenuToggle';
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
         <MenuToggle 
-            clicked={props.menuToggleClicked}
+            clicked={props.drawerToggleClicked}
              />
         <div className={classes.Logo}>
         <Logo />
