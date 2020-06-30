@@ -11,7 +11,7 @@ import * as actions from './store/actions/index';
 
 class App extends Component {
   componentDidMount() {
-    this.props.onTryAutoSetup();
+    this.props.onTryAutoSignup();
   }
 
   render(){
@@ -53,8 +53,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return{
-    onTryAutoSetup: () => dispatch(actions.authCheckState())
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
   }
 }
 
-export default withRouter(connect(null,mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));

@@ -13,17 +13,13 @@ class Layout extends Component {
     }
     
     sideDrawerClosedHandler = () => {
-        this.setState({showSideDrawer: false})
+        this.setState( { showSideDrawer: false } );
     }
 
-    sideDrawerOpenHandler = () => {
-        this.setState({showSideDrawer: true})
-    }
-    
-    sideMenuToggleHandler = () => {
-        this.setState((prevState) => {
+    sideDrawerToggleHandler = () => {
+        this.setState( ( prevState ) => {
             return { showSideDrawer: !prevState.showSideDrawer };
-        });
+        } );
     }
 
     render () {
@@ -31,7 +27,7 @@ class Layout extends Component {
             <Aux>
                 <Toolbar
                     isAuth={this.props.isAuthenticated}
-                    menuToggleClicked={this.sideMenuToggleHandler} />
+                    drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <SideDrawer 
                     isAuth={this.props.isAuthenticated}
                     open={this.state.showSideDrawer}
@@ -48,7 +44,7 @@ class Layout extends Component {
 const mapStateToProps = state => {
     return{
         isAuthenticated: state.auth.token !== null
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps)(Layout);

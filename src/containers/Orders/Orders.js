@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchOrders: (token, userId) => dispatch(actions.fetchOrders(token, userId))
     };
-}
+};
 
 const mapStateToProps = state => {
     return {
@@ -45,6 +45,6 @@ const mapStateToProps = state => {
         token: state.auth.token,
         userId: state.auth.userId
     };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Orders, axios));
