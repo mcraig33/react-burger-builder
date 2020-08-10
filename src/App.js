@@ -7,26 +7,26 @@ import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Logout from './containers/Auth/Logout/Logout';
 import * as actions from './store/actions/index';
 
-const Checkout = React.lazy(() => {
+const Checkout = React.lazy((props) => {
   return import('./containers/Checkout/Checkout');
 });
 
-const Orders = React.lazy(() => {
+const Orders = React.lazy((props) => {
   return import('./containers/Orders/Orders');
 });
 
-const Auth = React.lazy(() => {
+const Auth = React.lazy((props) => {
   return import('./containers/Auth/Auth');
 });
 
 const App = props => {
   useEffect(() => {
-    props.onTryAutoSignup();
+    props.onTryAutoSignup(props);
   }, []);
 
   let routes = (
     <Switch>
-      <Route path="/auth" render={() => <Auth />} />
+      <Route path="/auth" render={(props) => <Auth {...props} />} />
       <Route path="/" exact component={BurgerBuilder} />
       <Redirect to="/" />
     </Switch>
@@ -35,10 +35,10 @@ const App = props => {
   if ( props.isAuthenticated ) {
     routes = (
       <Switch>
-        <Route path="/checkout" render={() => <Checkout />} />
-        <Route path="/orders" render={() => <Orders />} />
+        <Route path="/checkout" render={(props) => <Checkout {...props}  />} />
+        <Route path="/orders" render={(props) => <Orders {...props}  />} />
         <Route path="/logout" component={Logout} />
-        <Route path="/auth" render={() => <Auth />} />
+        <Route path="/auth" render={(props) => <Auth {...props}  />} />
         <Route path="/" exact component={BurgerBuilder} />
         <Redirect to="/" />
       </Switch>
@@ -62,7 +62,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTryAutoSignup: () => dispatch( actions.authCheckState() )
+    onTryAutoSignup: (props) => dispatch( actions.authCheckState(props) )
   };
 };
 
